@@ -7,7 +7,7 @@ app.use("/", express.static(path.join(__dirname, "/public")));
 
 app.get("/api/config", (req, res) =>
   res.json({
-    pathBackend: "http://localhost:19020/api/myIp",
+    pathBackend: "http://localhost:19020/api/message",
   })
 );
 
