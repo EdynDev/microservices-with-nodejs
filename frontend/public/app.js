@@ -1,5 +1,13 @@
 const p1 = document.getElementById("msg01");
 const p2 = document.getElementById("msg02");
 
-p1.innerHTML = "msg Hola";
-p2.innerHTML = "msg Mundo";
+fetch("/api/config")
+  .then((res) => res.json())
+  .then((res) => {
+    fetch(res.pathBackend)
+      .then((res) => res.json())
+      .then((res) => {
+        p1.innerHTML = res.msg01;
+        p2.innerHTML = res.msg02;
+      });
+  });
