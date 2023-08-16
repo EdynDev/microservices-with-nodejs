@@ -1,34 +1,25 @@
 const express = require("express");
 const cors = require("cors");
-var os = require("os");
+const axios = require("axios");
 
 const app = express();
 app.use(cors());
 
 app.get("/healthz", (req, res) => res.send("Todo está ok"));
 
-app.get("/api/myIp", (req, res) => {
+app.get("/api/message", async (req, res) => {
   try {
     const messages = {
       msg01: "Tu IP es:",
     };
 
-    var interfaces = os.networkInterfaces();
-    var myIp = "0.0.0.0";
-    for (var devName in interfaces) {
-      var iface = interfaces[devName];
+    const path = "http://localhost:19030/api/myIp";
 
-      for (var i = 0; i < iface.length; i++) {
-        var alias = iface[i];
-        if (
-          alias.family === "IPv4" &&
-          alias.address !== "127.0.0.1" &&
-          !alias.internal
-        )
-          myIp = alias.address;
-      }
-    }
-    messages.msg02 = myIp;
+    const response = await axios.get(path);
+
+    messages.msg02 = response.data.message;
+
+    res.json(messages);
 
     res.json(messages);
   } catch (error) {
