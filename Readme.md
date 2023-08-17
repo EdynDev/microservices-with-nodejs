@@ -42,3 +42,47 @@ node .
 <div align="center">
   <img src="imgs/backend2.png">
 </div>
+
+### Step4: Containers
+
+```bash
+// En cada proyecto crear Dockerfile, con los siguientes pasos:
+1. Instalar NodeJS
+2. Copiar los archivos
+3. Ejecutar `npm install`
+4. Ejecutar el index.js
+
+# Crear redes
+docker network create net-ms1 -d bridge
+docker network create net-ms2
+
+# Crear imagen, correr contenedor y asociar a red (2) de backend2
+docker build -t backend2:v1 .
+docker run -d --name backend2 -e PORT=3020 backend2:v1
+docker network connect net-ms2 backend2
+
+# Crear imagen, correr contenedor y asociar a red (1) y (2) de backend1
+docker build -t backend1:v1 .
+docker run -d --name backend1 -p 9010:3010 -e PORT=3010 -e SERVICE_BACKEND2=http://backend2:3020/api/myIp --network net-ms1 backend1:v1
+docker network connect net-ms2 backend1
+
+# comprobar comunicación entre backend 1 y 2 en la red net-ms2
+docker exec -it backend1 sh
+/# apk add url
+/# curl $SERVICE_BACKEND2
+/# curl http://localhost:3010/api/message
+
+# Crear imagen y correr contenedor de frontend en la red net-ms1
+docker build -t frontend:v1 .
+docker run -d --name frontend -p 9000:3000 -e PORT=3000 -e SERVICE_BACKEND1=http://localhost:9010/api/message --network net-ms1 frontend:v1
+
+# Comandos extras
+docker network disconnect net-ms frontend
+docker network disconnect net-ms backend1
+docker network disconnect net-ms backend2
+docker stats
+```
+
+<div align="center">
+  <img src="imgs/containers.png">
+</div>
