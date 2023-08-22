@@ -13,13 +13,12 @@ app.get("/api/message", async (req, res) => {
       msg01: "Tu IP es:",
     };
 
-    const path = "http://localhost:19030/api/myIp";
+    const path = process.env.SERVICE_BACKEND2 || "http://localhost/api/myIp";
 
+    console.log("PATH", path);
     const response = await axios.get(path);
 
     messages.msg02 = response.data.message;
-
-    res.json(messages);
 
     res.json(messages);
   } catch (error) {
