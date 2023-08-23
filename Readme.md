@@ -86,3 +86,23 @@ docker stats
 <div align="center">
   <img src="imgs/containers.png">
 </div>
+
+### Step4: Docker Compose
+
+#### Refactor Dockerfile
+
+```
+Cada vez que se hace un cambio en el código, "npm install" se vuelve a ejecutar. Eso no debe ser, porque no se hizo ningún cambio en la dependencia de librerías.
+```
+
+<div align="center">
+  <img src="imgs/cache.png">
+</div>
+
+```
+El orden en los dockerfile debe ser el siguiente:
+```
+
+<div align="center">
+  <img src="imgs/cache-2.png">
+</div>

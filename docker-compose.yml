@@ -1,0 +1,61 @@
+version: "3.8"
+
+services:
+  backend2:
+    image: localhost:5000/backend2-ms
+    build:
+      context: .
+      dockerfile: backend2/Dockerfile
+    container_name: backend2-ms
+    mem_reservation: 128m
+    mem_limit: 256m
+    cpus: 0.5
+    environment:
+      - PORT=3020
+    ports:
+      - "3020:3020"
+    networks:
+      - net-course-ms2
+
+  backend1:
+    image: localhost:5000/backend1-ms
+    build:
+      context: .
+      dockerfile: backend1/Dockerfile
+    container_name: backend1-ms
+    mem_reservation: 128m
+    mem_limit: 256m
+    cpus: 0.5
+    environment:
+      - PORT=3010
+      - SERVICE_BACKEND2=http://backend2:3020/api/miIp
+    ports:
+      - "9010:3010"
+    networks:
+      - net-course-ms1
+      - net-course-ms2
+
+  frontend:
+    image: localhost:5000/frontend-ms
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    container_name: frontend-ms
+    mem_reservation: 128m
+    mem_limit: 256m
+    cpus: 0.5
+    environment:
+      - PORT=3000
+      - SERVICE_BACKEND1=http://localhost:9010/api/message
+    ports:
+      - "9000:3000"
+    networks:
+      - net-course-ms1
+
+networks:
+  net-course-ms1:
+    external:
+      name: net-ms1
+  net-course-ms2:
+    external:
+      name: net-ms2
