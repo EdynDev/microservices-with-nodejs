@@ -12,8 +12,6 @@ services:
     cpus: 0.5
     environment:
       - PORT=3020
-    ports:
-      - "3020:3020"
     networks:
       - net-course-ms2
 
@@ -28,7 +26,7 @@ services:
     cpus: 0.5
     environment:
       - PORT=3010
-      - SERVICE_BACKEND2=http://backend2:3020/api/miIp
+      - SERVICE_BACKEND2=http://backend2:3020/api/myIp
     ports:
       - "9010:3010"
     networks:
