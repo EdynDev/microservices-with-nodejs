@@ -8,6 +8,7 @@ app.use(cors());
 app.get("/healthz", (req, res) => res.send("Todo está ok"));
 
 app.get("/api/myIp", (req, res) => {
+  console.log("myIp backend2");
   try {
     var interfaces = os.networkInterfaces();
     var myIp = "0.0.0.0";

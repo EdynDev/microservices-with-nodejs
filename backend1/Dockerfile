@@ -1,6 +1,6 @@
 FROM node:alpine3.18
 
-ARG dir=backend2
+ARG dir=backend1
 
 WORKDIR /myapp
 

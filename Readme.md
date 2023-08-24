@@ -86,3 +86,48 @@ docker stats
 <div align="center">
   <img src="imgs/containers.png">
 </div>
+
+### Step5: Docker Compose
+
+#### Refactor Dockerfile
+
+```
+Cada vez que se hace un cambio en el código, "npm install" se vuelve a ejecutar. Eso no debe ser, porque no se hizo ningún cambio en la dependencia de librerías.
+```
+
+<div align="center">
+  <img src="imgs/cache.png">
+</div>
+
+```
+El orden en los dockerfile debe ser el siguiente:
+```
+
+<div align="center">
+  <img src="imgs/cache-2.png">
+</div>
+
+#### Template docker-compose
+
+<div align="center">
+  <img src="imgs/docker-compose.png">
+</div>
+
+#### Registry local
+
+```
+- Run a Private Docker Registry
+docker run -d -p 5000:5000 --restart always --name registry registry:2
+  * localhost:5000 -> host for your docker private registry
+
+- Push images to the Private Registry
+1) docker:
+docker push localhost:5000/backend1-ms
+
+2) docker compose:
+docker compose push
+```
+
+<div align="center">
+  <img src="imgs/registry.png">
+</div>
