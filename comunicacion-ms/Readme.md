@@ -77,9 +77,9 @@ docker build -t frontend:v1 .
 docker run -d --name frontend -p 9000:3000 -e PORT=3000 -e SERVICE_BACKEND1=http://localhost:9010/api/message --network net-ms1 frontend:v1
 
 # Comandos extras
-docker network disconnect net-ms frontend
-docker network disconnect net-ms backend1
-docker network disconnect net-ms backend2
+docker network disconnect net-ms1 frontend
+docker network disconnect net-ms2 backend1
+docker network disconnect net-ms2 backend2
 docker stats
 ```
 
@@ -91,9 +91,7 @@ docker stats
 
 #### Refactor Dockerfile
 
-```
 Cada vez que se hace un cambio en el código, "npm install" se vuelve a ejecutar. Eso no debe ser, porque no se hizo ningún cambio en la dependencia de librerías.
-```
 
 <div align="center">
   <img src="imgs/cache.png">
@@ -108,6 +106,10 @@ El orden en los dockerfile debe ser el siguiente:
 </div>
 
 #### Template docker-compose
+
+```
+docker compose up -d
+```
 
 <div align="center">
   <img src="imgs/docker-compose.png">
