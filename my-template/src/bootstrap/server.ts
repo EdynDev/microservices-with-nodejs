@@ -8,7 +8,7 @@ export default class ServerBoostrap implements Bootstrap {
   initialize(): Promise<any> {
     return new Promise((resolve, reject) => {
       const port = Parameter.PORT;
-      const server = http.createServer((req, res) => res.end("Hello World2!"));
+      const server = http.createServer((req, res) => res.end("Hello World!"));
 
       this.instance = server
         .listen(port)
