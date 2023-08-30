@@ -83,3 +83,27 @@ $ npx ts-node src/index.ts
 $ npm run build
 $ node dist/index.ts
 ```
+
+### 6) Reload apllicación con nodemon
+
+```
+1) Instalar nodemon
+$ npm i -D nodemon
+
+2) Añadir nodemon.json
+
+3) Agregar start dev en package.json
+"start:dev": "nodemon src/index.ts"
+
+4) Ejecutar aplicación con nodemon
+npm run start:dev
+```
+
+### 6) Ejecutar con docker
+
+```
+docker build -t app --build-arg BASE_DIR= .
+
+Agregar archivo nodemon.json
+2:28
+```
