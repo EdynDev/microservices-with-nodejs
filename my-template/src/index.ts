@@ -1,9 +1,11 @@
-import http from "http";
+import ServerBoostrap from "./bootstrap/server";
 
-const server = http.createServer((req, res) => {
-  res.end("Hello World2!");
-});
+const server = new ServerBoostrap();
 
-server.listen(3000, () => {
-  console.log("Server is listening on port 3000");
-});
+(async () => {
+  try {
+    await server.initialize();
+  } catch (err) {
+    server.close();
+  }
+})();
