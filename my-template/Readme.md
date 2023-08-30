@@ -86,24 +86,28 @@ $ node dist/index.ts
 
 ### 6) Reload apllicación con nodemon
 
+#### 6.1) Instalar nodemon
+
 ```
-1) Instalar nodemon
 $ npm i -D nodemon
+```
 
-2) Añadir nodemon.json
+#### 6.2) Añadir nodemon.json
 
-3) Agregar start dev en package.json
+#### 6.3) Agregar start dev en package.json
+
+```
 "start:dev": "nodemon src/index.ts"
-
-4) Ejecutar aplicación con nodemon
-npm run start:dev
 ```
 
-### 6) Ejecutar con docker
+#### 6.4) Ejecutar aplicación con nodemon
 
+```typescript
+$ npm run start:dev
 ```
-docker build -t app --build-arg BASE_DIR= .
 
-Agregar archivo nodemon.json
-2:28
-```
+### 7) Boostrap de aplicación
+
+<div align="center">
+  <img src="imgs/bootstrap.png">
+</div>
