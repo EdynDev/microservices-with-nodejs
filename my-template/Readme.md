@@ -108,6 +108,44 @@ $ npm run start:dev
 
 ### 7) Bootstrap de aplicación
 
+#### TAG -> template-bootstrap
+
 <div align="center">
   <img src="imgs/bootstrap.png">
+</div>
+
+### 8) Boostrap aplicación + mysql
+
+#### TAG -> template-app-mysql
+
+<div align="center">
+  <img src="imgs/bootstrap-mysql.png">
+</div>
+
+#### 8.1) Instalar librerías:
+
+```bash
+$ npm i typeorm mysql2
+```
+
+#### 8.2) Ejecutar contenedores mysql cliente y servidor
+
+```bash
+$ docker compose up -d
+```
+
+#### 8.3) Ingresar a mysql cliente
+
+<div align="center">
+  <img src="imgs/mysql-client.png">
+</div>
+
+#### 8.4) Ejecutar aplicación
+
+```bash
+$ npm run start:dev
+```
+
+<div align="center">
+  <img src="imgs/run-application.png">
 </div>

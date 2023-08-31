@@ -1,11 +1,11 @@
 import http from "http";
 import { Parameter } from "../core/parameters";
-import { Bootstrap } from "./bootstrap";
+import { Bootstrap, BootstrapReturn } from "./bootstrap";
 
-export default class ServerBoostrap implements Bootstrap {
+export default class ServerBootstrap implements Bootstrap {
   instance: http.Server;
 
-  initialize(): Promise<any> {
+  initialize(): Promise<BootstrapReturn> {
     return new Promise((resolve, reject) => {
       const port = Parameter.PORT;
       const server = http.createServer((req, res) => res.end("Hello World!"));
@@ -13,7 +13,7 @@ export default class ServerBoostrap implements Bootstrap {
       this.instance = server
         .listen(port)
         .on("listening", () => {
-          console.log(`Server is listening on port ${port}`);
+          console.log(`Server bootstrap is listening on port ${port}`);
           resolve(true);
         })
         .on("error", (err) => {

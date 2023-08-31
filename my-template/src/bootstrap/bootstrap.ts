@@ -1,5 +1,8 @@
+import { DataSource } from "typeorm";
+
+export type BootstrapReturn = boolean | Error | DataSource;
+
 export interface Bootstrap {
-  initialize(): Promise<void>;
-  // initialize(): Promise<any>;
-  // close(): void;
+  initialize(): Promise<BootstrapReturn>;
+  close(): void;
 }
