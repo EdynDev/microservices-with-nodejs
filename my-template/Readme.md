@@ -149,3 +149,21 @@ $ npm run start:dev
 <div align="center">
   <img src="imgs/run-application.png">
 </div>
+
+### 9) Boostrap aplicación + mysql + redis
+
+#### 9.1) Install ioredis y definiciones de ts
+
+```bash
+$ npm i ioredis
+$ npm i -D @types/ioredis
+```
+
+#### 9.2) Files:
+
+```
+- my-template/src/core/interface/redis.ts
+- my-template/src/core/parameters.ts
+- my-template/src/bootstrap/redis.ts
+- my-template/src/index.ts
+```
