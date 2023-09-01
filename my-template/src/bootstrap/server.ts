@@ -1,6 +1,7 @@
 import http from "http";
 import { Parameter } from "../core/parameters";
 import { Bootstrap, BootstrapReturn } from "./bootstrap";
+import logger from "../core/utils/logger";
 
 export default class ServerBootstrap implements Bootstrap {
   instance: http.Server;
@@ -13,11 +14,11 @@ export default class ServerBootstrap implements Bootstrap {
       this.instance = server
         .listen(port)
         .on("listening", () => {
-          console.log(`Server bootstrap is listening on port ${port}`);
+          logger.info(`Server bootstrap is listening on port ${port}`);
           resolve(true);
         })
         .on("error", (err) => {
-          console.log(err);
+          logger.error(err);
           reject(err);
         });
     });
