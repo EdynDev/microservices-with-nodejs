@@ -1,6 +1,7 @@
 import { DataSource } from "typeorm";
 import { Bootstrap, BootstrapReturn } from "./bootstrap";
 import { Parameter } from "../core/parameters";
+import logger from "src/core/utils/logger";
 
 export default class MySQLBootstrap implements Bootstrap {
   private static appDataSource: DataSource;
@@ -15,7 +16,6 @@ export default class MySQLBootstrap implements Bootstrap {
     return MySQLBootstrap.appDataSource.initialize();
   }
   close(): void {
-    console.log("Closing mysql");
     MySQLBootstrap.appDataSource?.destroy();
   }
 }

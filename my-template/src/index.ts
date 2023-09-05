@@ -1,6 +1,7 @@
 import MySQLBootstrap from "./bootstrap/mysql";
 import ServerBoostrap from "./bootstrap/server";
 import RedisBootstrap from "./bootstrap/redis";
+import logger from "./core/utils/logger";
 
 const server = new ServerBoostrap();
 const mysql = new MySQLBootstrap();
@@ -14,9 +15,9 @@ const redis = new RedisBootstrap();
       redis.initialize(),
     ];
     await Promise.all(listPromises);
-    console.log(">>>>>>>>Server and MySQL initialized");
+    logger.info(">>>>>>>>Server and MySQL initialized");
   } catch (err) {
-    console.log(err);
+    logger.error(err);
     server.close();
     mysql.close();
   }
