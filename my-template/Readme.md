@@ -167,3 +167,40 @@ $ npm i -D @types/ioredis
 - my-template/src/bootstrap/redis.ts
 - my-template/src/index.ts
 ```
+
+#### 9.3) PR -> https://github.com/EdynDev/microservices-with-nodejs/pull/6/files
+
+### 10) Add logger
+
+#### 10.1) Install libraries
+
+```bash
+$ npm i winston@3.8.2 winston-daily-rotate-file chalk@4.1.2
+```
+
+#### 10.2) PR -> https://github.com/EdynDev/microservices-with-nodejs/pull/7/files
+
+### 11) Domain Layer
+
+#### 11.1) Install UID Package
+
+```bash
+$ npm i uuid
+$ npm i -D @types/uuid
+```
+
+#### 11.2) Add files
+
+```bash
+├── index.ts
+└── module
+    └── medic
+        └── domain
+            ├── entities
+            │   └── speciality.ts
+            └── roots
+                ├── medic.factory.ts
+                └── medic.ts
+```
+
+#### 11.3) PR -> https://github.com/EdynDev/microservices-with-nodejs/pull/8/files
