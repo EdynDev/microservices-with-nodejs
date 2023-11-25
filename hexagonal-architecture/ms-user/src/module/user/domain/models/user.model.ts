@@ -6,6 +6,7 @@ export class User {
   private readonly id: string;
   private name: string;
   private isActive: boolean;
+  private password: string;
 
   constructor(props: UserProps) {
     Object.assign(this, props);
@@ -16,6 +17,7 @@ export class User {
     return {
       id: this.id,
       name: this.name,
+      password: this.password,
       isActive: this.isActive,
     };
   }

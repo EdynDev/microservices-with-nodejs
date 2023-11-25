@@ -17,6 +17,7 @@ export class UserDto {
     const user = await UserFactory.create({
       id: userInfo.id,
       name: userInfo.name,
+      password: userInfo.password,
       isActive: userInfo.isActive,
     });
 
