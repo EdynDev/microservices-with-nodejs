@@ -4,4 +4,8 @@ export class UserInsertDto {
   @IsNotEmpty()
   @IsString()
   name: string;
+
+  @IsNotEmpty()
+  @IsString()
+  password: string;
 }

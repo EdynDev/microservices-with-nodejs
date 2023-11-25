@@ -13,6 +13,7 @@ import { UserDto } from "./dtos/user-get.dto";
 import { UserEntity } from "./entities/user.entity";
 import { UserDatabaseException } from "./exceptions/user-database.exception";
 import { UserSaveDto } from "./dtos/user-save.dto";
+import logger from "../../../core/utils/logger";
 
 export class UserInfrastructure implements UserRepository {
   async save(user: User): Promise<UserResult> {
@@ -32,6 +33,7 @@ export class UserInfrastructure implements UserRepository {
       const users = await repository.find({
         where: { isActive: true },
       });
+      logger.info(`Users >>>> ${users}`);
       return ok((await UserDto.fromDataToDomain(users)) as User[]);
     } catch (error) {
       return err(new UserDatabaseException(error.message));
