@@ -1,0 +1,6 @@
+post http://localhost:3010/auth/validate-token
+content-type: application/json
+
+{
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVXNlcjMiLCJlbWFpbCI6ImVjb3JvbmFkb0BjcmFja3RoZWNvZGUubGEiLCJpYXQiOjE3MDEyOTY4ODIsImV4cCI6MTcwMTI5NzAwMn0.X_4ivtQEVjwFEFy7ef9WrCaShafRqRWhqdSiV8jXQSc"
+}

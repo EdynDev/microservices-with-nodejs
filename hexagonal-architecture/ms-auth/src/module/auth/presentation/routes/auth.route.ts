@@ -1,21 +1,19 @@
 import { Router } from "express";
 
-/* import { AuthApplication } from "../application/auth.application";
-import { AuthRepository } from "../domain/repositories/auth.repository";
-import { AuthInfrastructure } from "../infrastructure/auth.infrastructure";
-import { AuthController } from "./auth.controller";
- */
+import { AuthApplication } from "../../application/auth.application";
+import { AuthRepository } from "../../domain/repositories/auth.repository";
+import { AuthInfrastructure } from "../../infrastructure/auth.infrastructure";
+import { AuthController } from "../controllers/auth.controller";
 
-// const repository: AuthRepository = new AuthInfrastructure();
-// const application = new AuthApplication(repository);
-// const controller = new AuthController(application);
+const repository: AuthRepository = new AuthInfrastructure();
+const application = new AuthApplication(repository);
+const controller = new AuthController(application);
 
-class AuthRoute {
+class AuthRouter {
   private router: Router;
 
   constructor() {
     this.router = Router();
-    this.addRoutes();
   }
 
   getRouter() {
@@ -27,8 +25,6 @@ class AuthRoute {
 
     return this.router;
   }
-
-  addRoutes() {}
 }
 
-export default new AuthRoute().getRouter();
+export default new AuthRouter().getRouter();
