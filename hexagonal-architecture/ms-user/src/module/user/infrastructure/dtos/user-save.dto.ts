@@ -8,6 +8,7 @@ export class UserSaveDto {
     const entity = new UserEntity();
     entity.id = properties.id;
     entity.name = properties.name;
+    entity.email = properties.email;
     entity.password = properties.password;
     entity.isActive = properties.isActive;
     return entity;

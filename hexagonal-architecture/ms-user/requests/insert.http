@@ -3,5 +3,6 @@ Content-Type: application/json
 
 {
     "name": "User3",
+    "email": "ecoronado@crackthecode.la",
     "password": "abcd"
 }
