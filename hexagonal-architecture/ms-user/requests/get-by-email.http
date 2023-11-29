@@ -1,0 +1,7 @@
+
+post http://localhost:3001/user/user-by-email
+Content-Type: application/json
+
+{
+    "email": "ecoronado@crackthecode.la"
+}
