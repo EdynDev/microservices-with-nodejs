@@ -7,4 +7,5 @@ export type UserListResult = Result<User[], Error>;
 export interface UserRepository {
   save(user: User): Promise<UserResult>;
   getAll(): Promise<UserListResult>;
+  getByEmail(email: string): Promise<UserResult>;
 }

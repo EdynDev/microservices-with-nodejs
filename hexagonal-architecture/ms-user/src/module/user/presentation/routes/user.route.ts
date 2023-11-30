@@ -7,6 +7,7 @@ import { UserRepository } from "../../domain/repositories/user.repository";
 import { UserApplication } from "../../application/user.application";
 import { UserController } from "../controllers/user.controller";
 import { UserInsertDto } from "../dtos/user-insert.dto";
+import { UserByEmailDto } from "../dtos/user-by-email.dto";
 
 const repository: UserRepository = new UserInfrastructure();
 const application = new UserApplication(repository);
@@ -25,6 +26,11 @@ class UserRouter {
       "/",
       Validator.execute({ body: new UserInsertDto() }),
       controller.insert.bind(controller)
+    );
+    this.router.post(
+      "/user-by-email",
+      Validator.execute({ body: new UserByEmailDto() }),
+      controller.getByEmail.bind(controller)
     );
     return this.router;
   }

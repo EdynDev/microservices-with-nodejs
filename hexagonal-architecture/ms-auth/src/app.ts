@@ -1,7 +1,7 @@
 import express, { Application } from "express";
 
 import { HandleError } from "./core/presentation/handle-error";
-// import AuthRouter from "./module/auth/presentation/auth.routes";
+import AuthRouter from "./module/auth/presentation/routes/auth.route";
 
 class App {
   private readonly expressApp: Application;
@@ -9,7 +9,7 @@ class App {
   constructor() {
     this.expressApp = express();
     this.handleMiddlewares();
-    // this.handleRoutes();
+    this.handleRoutes();
     this.handleHealthCheck();
     this.handleErrors();
   }
@@ -19,10 +19,9 @@ class App {
     this.expressApp.use(express.urlencoded({ extended: false }));
   }
 
-  /*
   handleRoutes() {
     this.expressApp.use("/auth", AuthRouter);
-  }*/
+  }
 
   handleHealthCheck() {
     this.expressApp.get("/health", (req, res) => {
