@@ -11,4 +11,8 @@ export class UserApplication {
   async getAll() {
     return await this.repository.getAll();
   }
+
+  async getByEmail(email: string) {
+    return await this.repository.getByEmail(email);
+  }
 }

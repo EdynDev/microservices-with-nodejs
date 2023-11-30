@@ -39,4 +39,16 @@ export class UserInfrastructure implements UserRepository {
       return err(new UserDatabaseException(error.message));
     }
   }
+  async getByEmail(email: string): Promise<UserResult> {
+    const repository = db.getDataSource().getRepository(UserEntity);
+
+    try {
+      const user = await repository.find({
+        where: { email, isActive: true },
+      });
+      return ok((await UserDto.fromDataToDomain(user)) as User);
+    } catch (error) {
+      return err(new UserDatabaseException(error.message));
+    }
+  }
 }

@@ -29,4 +29,13 @@ export class UserController {
     }
     res.json(userResult.value);
   }
+
+  async getByEmail(req: Request, res: Response, next: NextFunction) {
+    const { email } = req.body;
+    const userResult = await this.application.getByEmail(email);
+    if (userResult.isErr()) {
+      return next(userResult.error);
+    }
+    res.json(userResult.value);
+  }
 }
