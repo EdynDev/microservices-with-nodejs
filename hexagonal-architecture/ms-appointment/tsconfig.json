@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",           // AMD motor de creación de módulos
+    "esModuleInterop": true,        // permitir trabajar con módulos creados con otros motores
+    "resolveJsonModule": true,      // utilizar json con data mockeada
+    "target": "ES2020",             // version transpilar código en backend
+    "noImplicitAny": true,          // no asumir que variables sin tipo ni valor es de tipo ANY.
+    "moduleResolution": "node",     // 
+    "sourceMap": false,             // 
+    "baseUrl": "./",                // directory root
+    "outDir": "./cache",            // archivos compilados, no mimificados
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  },
+  "exclude": ["node_modules", "cache", "dist"],
+  "include": ["src/**/*"]
+}

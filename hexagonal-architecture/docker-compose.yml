@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  ms-appointment:
+    container_name: ms-appointment
+    build:
+      context: ./
+      dockerfile: ms-appointment/Dockerfile
+      args:
+        - BASE_DIR=ms-appointment
+    environment:
+      - APPLICATION_PORT=3030
+    ports:
+      - "3030:3030"
+    networks:
+      - net-ms
+
+networks:
+  net-ms:
+    driver: bridge
