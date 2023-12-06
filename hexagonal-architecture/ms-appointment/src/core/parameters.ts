@@ -22,5 +22,18 @@ export class Parameter {
       process.env.SERVICE_APPOINTMENT || "http://localhost:3030/appointment"
     );
   }
+
+  static get RABBIT_HOST(): string {
+    return process.env.RABBIT_HOST || "localhost:5672";
+  }
+
+  static get EXCHANGE_NAME(): string {
+    return process.env.EXCHANGE_NAME || "exchange";
+  }
+
+  static get EXCHANGE_TYPE(): string {
+    return process.env.EXCHANGE_TYPE || "direct";
+  }
+
   static readonly ENVIRONMENT = process.env.NODE_ENV || "development";
 }

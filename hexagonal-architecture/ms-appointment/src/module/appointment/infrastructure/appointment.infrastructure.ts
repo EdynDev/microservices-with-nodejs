@@ -1,7 +1,7 @@
 import { ok } from "neverthrow";
 
-// import RabbitMQBootstrap from "../../../bootstrap/rabbitmq";
-// import { Parameter } from "../../../core/parameters";
+import RabbitMQBootstrap from "../../../bootstrap/rabbitmq";
+import { Parameter } from "../../../core/parameters";
 import {
   AppoinmentResult,
   AppointmentRepository,
@@ -10,7 +10,7 @@ import { Appoinment } from "../domain/models/appointment.model";
 
 export class AppointmentInfrastructure implements AppointmentRepository {
   async save(appointment: Appoinment): Promise<AppoinmentResult> {
-    /* const channel = RabbitMQBootstrap.channel;
+    const channel = RabbitMQBootstrap.channel;
     const exchangeName = Parameter.EXCHANGE_NAME;
     const exchangeType = Parameter.EXCHANGE_TYPE;
     const exchangeOptions = { durable: true };
@@ -23,8 +23,6 @@ export class AppointmentInfrastructure implements AppointmentRepository {
       Buffer.from(JSON.stringify(appointment))
     );
 
-    return Promise.resolve(ok(appointment));
-    */
     return Promise.resolve(ok(appointment));
   }
 

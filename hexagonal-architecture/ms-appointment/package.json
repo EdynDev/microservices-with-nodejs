@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/amqplib": "^0.10.1",
     "@types/jsonwebtoken": "^9.0.2",
     "@types/uuid": "^9.0.3",
     "@types/bcryptjs": "^2.4.2",
@@ -25,6 +26,7 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
+    "amqplib": "^0.10.3",
     "axios": "^1.5.0",
     "jsonwebtoken": "^9.0.1",
     "uuid": "^9.0.0",
