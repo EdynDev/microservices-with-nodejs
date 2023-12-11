@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:management-alpine
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - net-ms
+
+  ms-appointment:
+    container_name: ms-appointment
+    build:
+      context: ./
+      dockerfile: ms-appointment/Dockerfile
+      args:
+        - BASE_DIR=ms-appointment
+    restart: always
+    environment:
+      - APPLICATION_PORT=3030
+      - RABBIT_HOST=rabbitmq:5672
+      - EXCHANGE_NAME=appointment
+      - EXCHANGE_TYPE=direct
+    ports:
+      - "3030:3030"
+    depends_on:
+      - rabbitmq
+    networks:
+      - net-ms
+
+networks:
+  net-ms:
+    driver: bridge
