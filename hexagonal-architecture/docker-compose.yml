@@ -30,6 +30,51 @@ services:
     networks:
       - net-ms
 
+  ms-appointment-mx:
+    build:
+      context: ./
+      dockerfile: ms-appointment-mx/Dockerfile
+      args:
+        - BASE_DIR=ms-appointment-mx
+    container_name: ms-appointment-mx
+    restart: always
+    environment:
+      - APPLICATION_PORT=3040
+      - RABBIT_HOST=rabbitmq:5672
+      - EXCHANGE_NAME=appointment
+      - EXCHANGE_TYPE=direct
+      - ROUTING_KEY=MX
+      - EXCHANGE_NAME_DLQ=appointment-dlq
+      - EXCHANGE_NAME_ERROR=exchange-error
+      - ROUTING_KEY_DLQ=help-desk
+    ports:
+      - "3040:3040"
+    depends_on:
+      - rabbitmq
+    networks:
+      - net-ms
+
+  help-desk:
+    build:
+      context: ./
+      dockerfile: help-desk/Dockerfile
+      args:
+        - BASE_DIR=help-desk
+    container_name: help-desk
+    restart: always
+    environment:
+      - APPLICATION_PORT=3070
+      - RABBIT_HOST=rabbitmq:5672
+      - EXCHANGE_NAME=appointment-dlq
+      - EXCHANGE_TYPE=direct
+      - ROUTING_KEY=help-desk
+    ports:
+      - "3070:3070"
+    depends_on:
+      - rabbitmq
+    networks:
+      - net-ms
+
 networks:
   net-ms:
     driver: bridge
